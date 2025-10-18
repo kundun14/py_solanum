@@ -27,7 +27,7 @@ The following figure shows the general diagram of the SOLANUM model:
 ## Repository Structure
 
 ```text
-solanum_github/
+py_solanum/
 │
 ├── solanum/
 │   ├── __init__.py
