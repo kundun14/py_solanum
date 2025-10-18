@@ -1,4 +1,8 @@
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17388068.svg)](https://doi.org/10.5281/zenodo.17388068)
+
+
 # SOLANUM Crop Model
 
 <!-- **Author:** Marcelo Bueno Dueñas  
@@ -73,7 +77,21 @@ After runing the SOLANUM model, you could plot the results:
 ![SOLANUM Output](fig/output.PNG)
 
 
-## Model Development
+To cite pySolanum
+
+```bibtex
+@software{BuenoDuenas2025,
+  author       = {Marcelo Bueno Dueñas},
+  title        = {pySolanum: A Python implementation of the SOLANUM potato crop model for Andean conditions},
+  version      = {1.0.0},
+  year         = {2025},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17388068},
+  url          = {https://doi.org/10.5281/zenodo.17388068}
+}
+```
+
+## Model Structure
 
 This document presents the main equations of the model, the biomass dynamics, and the soil water balance, as well as the indices related to stress and water use efficiency.
 
