@@ -250,7 +250,7 @@ $$
 3. Condori, B., et al. (2008). *Agrophysiological characterisation and parametrisation of Andean tubers.* European Journal of Agronomy, 28(4), 526–540.  
 4. Hijmans, R. J. (2003). *The effect of climate change on global potato production.* American Journal of Potato Research, 80(4), 271–279.  
 5. Quiroz, R., et al. (2018). *Impact of climate change on the potato crop and biodiversity in its center of origin.* Open Agriculture, 3(1), 273–283.  
-6. Quiroz, R., et al. (2017). *SOLANUM Model Documentation.* International Potato Center (CIP), Lima, Peru.  
+6. Fleisher, D. H., Condori, B., Quiroz, R., Alva, A., Asseng, S., Barreda, C., Bindi, M., Boote, K. J., Ferrise, R., Franke, A. C., Govindakrishnan, P. M., Harahagazwe, D., Hoogenboom, G., Naresh Kumar, S., Merante, P., Nendel, C., Olesen, J. E., Parker, P. S., Raes, D., ... Woli, P. (2017). A potato model intercomparison across varying climates and productivity levels. Global Change Biology, 23(3), 1258-1281. https://doi.org/10.1111/gcb.13411 
 7. Haverkort, A. J., & Harris, P. M. (1987). *A model for potato growth and yield under field conditions.* Netherlands Journal of Agricultural Science, 35, 273–286.  
 8. Kooman, P. L., & Haverkort, A. J. (1995). *Modeling development and growth of the potato crop influenced by temperature and daylength: LINTUL-POTATO.*  
 9. Spitters, C. J. T., & Schapendonk, A. H. C. M. (1990). *Evaluation of breeding strategies for drought tolerance for potato by means of crop growth simulation.* Plant and Soil, 123, 193–203.
