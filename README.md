@@ -57,11 +57,23 @@ pip install -r requirements.txt
 
 ## Run Solanum
 
+Open your terminal and run:
+
+```bash
+git clone https://github.com/kundun14/py_solanum.git
+cd py_solanum
+```
+
 To test the model with a sample dataset, navigate to the repository root and run:
 
 ```bash
 python demo_run.py
 ```
+
+After runing the SOLANUM model, you could plot the results as:
+
+![SOLANUM Output](fig/output.PNG)
+
 
 ## Model Development
 
