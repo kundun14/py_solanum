@@ -7,7 +7,7 @@
 ---
 
 ## Introduction
-SOLANUM is a potato crop model modified from LINTUL-POTATO and adapted for Andean conditions. It requires daily agrometeorological data (precipitation, minimum and maximum temperature, solar radiation, and photoperiod), soil parameters (field capacity FC, permanent wilting point WP, soil depth), and environmental variables such as atmospheric CO₂ concentration. The model is capable of estimating tuber yield under water stress, frost, variations in atmospheric CO₂ concentration, and thermal stress.
+SOLANUM is a potato crop model modified from LINTUL-POTATO and adapted for Andean conditions. It requires daily agrometeorological data (precipitation, minimum and maximum temperature, solar radiation, and potential evapotranspiration), soil parameters (field capacity, permanent wilting point and soil depth), and environmental variables such as atmospheric CO₂ concentration. The model is capable of estimating tuber yield under water stress, frost, variations in atmospheric CO₂ concentration, and thermal stress.
 
 The model operates with daily time steps and performs iterative calculations in the following order:  
 1. Foliage growth and biomass accumulation  
