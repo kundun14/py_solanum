@@ -2,6 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17388068.svg)](https://doi.org/10.5281/zenodo.17388068)
 
+<!-- ![SOLANUM Model Diagram](fig/logo.PNG) -->
+<img src="fig/logo.PNG" alt="SOLANUM Model Diagram" width="50%"/>
 
 # SOLANUM Crop Model
 
