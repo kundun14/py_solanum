@@ -60,16 +60,15 @@ Open your terminal and run:
 
 ```bash
 git clone https://github.com/kundun14/py_solanum.git
-cd py_solanum
 ```
 
 To test the model with a sample dataset, navigate to the repository root and run:
 
 ```bash
-python demo_run.py
+python solanum_run.py
 ```
 
-After runing the SOLANUM model, you could plot the results as:
+After runing the SOLANUM model, you could plot the results:
 
 ![SOLANUM Output](fig/output.PNG)
 
