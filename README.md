@@ -1,18 +1,13 @@
 
 # SOLANUM Crop Model
 
-**Author:** Marcelo Bueno Dueñas  
-**Date:** 2025-10-18
-
----
-
-## Abstract
-The SOLANUM model is a potato crop model capable of estimating tuber yield under water stress, frost, variations in atmospheric CO₂ concentration, and thermal stress. This document presents the main equations of the model, the biomass dynamics, and the soil water balance, as well as the indices related to stress and water use efficiency.
+<!-- **Author:** Marcelo Bueno Dueñas  
+**Date:** 2025-10-18 -->
 
 ---
 
 ## Introduction
-SOLANUM is a potato crop model modified from LINTUL-POTATO and adapted for Andean conditions. It requires daily agrometeorological data (precipitation, minimum and maximum temperature, solar radiation, and photoperiod), soil parameters (field capacity FC, permanent wilting point WP, soil depth), and environmental variables such as atmospheric CO₂ concentration.
+SOLANUM is a potato crop model modified from LINTUL-POTATO and adapted for Andean conditions. It requires daily agrometeorological data (precipitation, minimum and maximum temperature, solar radiation, and photoperiod), soil parameters (field capacity FC, permanent wilting point WP, soil depth), and environmental variables such as atmospheric CO₂ concentration. The model is capable of estimating tuber yield under water stress, frost, variations in atmospheric CO₂ concentration, and thermal stress.
 
 The model operates with daily time steps and performs iterative calculations in the following order:  
 1. Foliage growth and biomass accumulation  
@@ -70,11 +65,17 @@ python demo_run.py
 
 ## Model Development
 
+This document presents the main equations of the model, the biomass dynamics, and the soil water balance, as well as the indices related to stress and water use efficiency.
+
+---
+
 ## Biomass Accumulation
 
 The growth rate of a well-watered crop is proportional to the absorbed light and the net assimilation rate. Daily dry matter accumulation is simulated as:
 
-\[ dTDM_w = \frac{RUE_w \cdot CC_w \cdot PAR}{100} \cdot HI_w \]
+$$
+dTDM_w = \frac{RUE_w \cdot CC_w \cdot PAR}{100} \cdot HI_w
+$$
 
 Where:
 
@@ -86,11 +87,15 @@ Where:
 
 Total accumulated biomass:
 
-\[ DTY_w = \int_{TT=0}^{TT=n} dTDM_w \, dt \]
+$$
+DTY_w = \int_{TT=0}^{TT=n} dTDM_w \, dt
+$$
 
 Fresh yield:
 
-\[ FTY_w = \frac{DTY_w}{DMContent} \]
+$$
+FTY_w = \frac{DTY_w}{DMContent}
+$$
 
 ---
 
@@ -98,20 +103,19 @@ Fresh yield:
 
 The relative effect of CO₂ on radiation assimilation efficiency:
 
-\[ CO2relatEffect =
-\begin{cases}
-0.0031\cdot CO2AirConcent + 0.0093, & \text{if } CO2AirConcent < 330\\
-0.0007\cdot CO2AirConcent + 0.79,    & \text{if } 330 \le CO2AirConcent < 880\\
-0.000008\cdot CO2AirConcent + 1.4223,& \text{if } CO2AirConcent \ge 880
-\end{cases} \]
+- If `CO2AirConcent < 330`:  
+  $CO2relatEffect = 0.0031 \cdot CO2AirConcent + 0.0093$  
+- If `330 ≤ CO2AirConcent < 880`:  
+  $CO2relatEffect = 0.0007 \cdot CO2AirConcent + 0.79$  
+- If `CO2AirConcent ≥ 880`:  
+  $CO2relatEffect = 0.000008 \cdot CO2AirConcent + 1.4223$  
 
 Radiation use efficiency adjusted for CO₂:
 
-\[ RUE_{CO2} =
-\begin{cases}
-RUE_w \cdot 1.5, & \text{if } CO2relatEffect \ge 1.5\\
-RUE_w \cdot CO2relatEffect, & \text{if } CO2relatEffect < 1.5
-\end{cases} \]
+- If `CO2relatEffect ≥ 1.5`:  
+  $RUE_{CO2} = RUE_w \cdot 1.5$  
+- If `CO2relatEffect < 1.5`:  
+  $RUE_{CO2} = RUE_w \cdot CO2relatEffect$  
 
 ---
 
@@ -119,25 +123,32 @@ RUE_w \cdot CO2relatEffect, & \text{if } CO2relatEffect < 1.5
 
 Thermal time accumulation:
 
-\[ TT_i = TT_{i-1} + k \cdot (T_a - T_{base}) \]
-
-Where `T_a = (Tmin + Tmax)/2`.
+$$
+TT_i = TT_{i-1} + k \cdot (T_a - T_{base}), \quad T_a = \frac{T_{min} + T_{max}}{2}
+$$
 
 ### Canopy Cover (CC)
 
 Leaf expansion:
 
-\[ canopy = w_{max} \cdot \exp\!\left(-\left(\frac{t_m}{TT}\cdot PDEN\right)\right)\cdot\left(1+\frac{t_e - TT}{t_e - t_m}\right)\cdot\frac{TT}{t_e}\left(\frac{t_e}{t_e - t_m}\right) \]
+$$
+canopy = w_{max} \cdot \exp\Big(-\frac{t_m}{TT} \cdot PDEN\Big) 
+\cdot \Big(1 + \frac{t_e - TT}{t_e - t_m}\Big) \cdot \frac{TT}{t_e} \cdot \frac{t_e}{t_e - t_m}
+$$
 
 Adjusted canopy cover:
 
-\[ CC_w = CC \cdot \frac{0.75 - W_s}{0.75} \]
+$$
+CC_w = CC \cdot \frac{0.75 - W_s}{0.75}
+$$
 
 ### Tuberization
 
 Harvest index (Gompertz function):
 
-\[ HI = A \cdot \exp\!\Big(-\exp\!\big(\tfrac{TT - t_u}{b}\big)\Big) \]
+$$
+HI = A \cdot \exp\Big(-\exp\big(\frac{TT - t_u}{b}\big)\Big)
+$$
 
 ---
 
@@ -145,43 +156,40 @@ Harvest index (Gompertz function):
 
 Water balance:
 
-\[ ASWC_i = ASWC_{i-1} + P_i + I_i - E_0 - T - D \]
+$$
+ASWC_i = ASWC_{i-1} + P_i + I_i - E_0 - T - D
+$$
 
 Potential transpiration:
 
-\[ T_0 = \frac{w_{max} \times ET_0 \times (1 - e^{-0.7\cdot 4 \cdot CC_w})}{1 - e^{-0.7\cdot 4 \cdot w_{max}}} \]
+$$
+T_0 = \frac{w_{max} \times ET_0 \times (1 - e^{-0.7\cdot 4 \cdot CC_w})}{1 - e^{-0.7\cdot 4 \cdot w_{max}}}
+$$
 
 Potential evaporation:
 
-\[ E_0 = ET_0 - T_0 \]
+$$
+E_0 = ET_0 - T_0
+$$
 
 Discrete soil water update:
 
-\[ ASWC_i =
-\begin{cases}
-WP, &\text{if } P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i \le WP\\
-FC, &\text{if } P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i \ge FC\\
-P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i, &\text{otherwise}
-\end{cases} \]
+- If $P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i \le WP$: $ASWC_i = WP$  
+- If $P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i \ge FC$: $ASWC_i = FC$  
+- Otherwise: $ASWC_i = P_i + I_i + ASWC_{i-1} - E_{0,i-1} - T_i$
 
 Actual transpiration:
 
-\[ T =
-\begin{cases}
-0, & \text{if } ASWC_i < WP\\
-T_0 \cdot \dfrac{WP - ASWC_i}{WP - CL}, & \text{if } WP \le ASWC_i \le CL\\
-T_0, & \text{if } ASWC_i > CL
-\end{cases} \]
+- If `ASWC_i < WP`: $T = 0$  
+- If `WP ≤ ASWC_i ≤ CL`: $T = T_0 \cdot \frac{WP - ASWC_i}{WP - CL}$  
+- If `ASWC_i > CL`: $T = T_0$
 
 ---
 
 ## Water Stress Index (Ws)
 
-\[ W_s =
-\begin{cases}
-0, & T_i > 0.5 \times T_0\\
-\frac{0.5 \times T_0 - T_i}{T_0}, & T_i \le 0.5 \times T_0
-\end{cases} \]
+- If `T_i > 0.5 × T_0`: $W_s = 0$  
+- If `T_i ≤ 0.5 × T_0`: $W_s = \frac{0.5 \cdot T_0 - T_i}{T_0}$  
 
 ---
 
@@ -190,14 +198,19 @@ T_0, & \text{if } ASWC_i > CL
 - Fresh tuber yield (`FTY_w`)  
 - Total accumulated evapotranspiration (`ΣET`)  
 - Daily water balance (`ASWC`) and stress status (`Ws`)  
-- Total water requirement for the season `WR = ΣT`  
-- Water Use Efficiency (WUE):
+- Total water requirement for the season: `WR = ΣT`  
 
-\[ WUE_{ET} = \frac{FTY_w}{\sum ET} \]
+Water Use Efficiency (WUE):
+
+$$
+WUE_{ET} = \frac{FTY_w}{\sum ET}
+$$
 
 Normalized Water Stress Index (WSI):
 
-\[ WSI = 1 - \frac{\sum T}{\sum T_0} \]
+$$
+WSI = 1 - \frac{\sum T}{\sum T_0}
+$$
 
 ---
 
