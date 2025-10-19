@@ -3,7 +3,12 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17388068.svg)](https://doi.org/10.5281/zenodo.17388068)
 
 <!-- ![SOLANUM Model Diagram](fig/logo.PNG) -->
-<img src="fig/logo.PNG" alt="SOLANUM Model Diagram" width="80%"/>
+<!-- <img src="fig/logo.PNG" alt="SOLANUM Model Diagram" width="70%"/> -->
+
+<div align="center">
+  <img src="fig/logo.PNG" alt="SOLANUM Model Diagram" width="70%"/>
+</div>
+
 <!-- <img src="fig/logo.PNG" alt="SOLANUM Model Diagram" width="300"/> -->
 
 # SOLANUM Crop Model
